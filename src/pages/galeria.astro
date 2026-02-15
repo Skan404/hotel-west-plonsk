@@ -1,0 +1,149 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+// Tutaj definiujemy kategorie do filtrowania
+const filters = [
+  { label: 'Wszystkie', value: 'wszystkie' },
+  { label: 'Pokoje', value: 'pokoje' },
+  { label: 'Łazienki', value: 'lazienki' },
+  { label: 'Części wspólne', value: 'wspolne' },
+];
+---
+
+<MainLayout title="Galeria Zdjęć">
+    <Navbar />
+    
+    <main class="pt-20">
+        <section class="bg-white py-16 text-center border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4">
+                <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-primary/10 rounded-full">
+                    Nasze Wnętrza
+                </span>
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Galeria Zdjęć</h1>
+                <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                    Zobacz nasze pokoje, nowoczesne łazienki oraz udogodnienia przygotowane specjalnie dla Ciebie.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-8 sticky top-20 z-40 shadow-sm/50 backdrop-blur-md bg-background-light/90">
+            <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-3">
+                {filters.map((filter, index) => (
+                    <button 
+                        class={`filter-btn px-6 py-2.5 rounded-full text-sm font-medium transition-all border border-slate-200 shadow-sm hover:shadow-md 
+                        ${index === 0 ? 'bg-primary text-white border-primary' : 'bg-white text-slate-600 hover:text-primary hover:border-primary/30'}`}
+                        data-filter={filter.value}
+                    >
+                        {filter.label}
+                    </button>
+                ))}
+            </div>
+        </section>
+
+        <section class="py-12 bg-background-light min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6" id="gallery-grid">
+                    
+                    <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="pokoje">
+                        <img src="https://placehold.co/600x800/e2e8f0/1e293b?text=Pokoj+Pionowy" alt="Pokój hotelowy" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="lazienki">
+                        <img src="https://placehold.co/800x600/f1f5f9/334155?text=Lazienka" alt="Łazienka" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="wspolne">
+                        <img src="https://placehold.co/800x500/fff7ed/9a3412?text=Recepcja" alt="Recepcja" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="pokoje">
+                        <img src="https://placehold.co/800x600/e2e8f0/1e293b?text=Pokoj+Standard" alt="Pokój standard" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="wspolne">
+                        <img src="https://placehold.co/600x900/f8fafc/475569?text=Korytarz" alt="Korytarz" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
+                        </div>
+                    </div>
+                     <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="lazienki">
+                        <img src="https://placehold.co/800x600/f1f5f9/334155?text=Prysznic" alt="Prysznic" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+            <div class="bg-primary/5 rounded-2xl p-8 md:p-12 text-center border border-primary/10">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Podoba Ci się to co widzisz?</h2>
+                <p class="text-slate-600 mb-8 max-w-xl mx-auto">
+                    Nasze pokoje znikają szybko. Sprawdź dostępność na wybrany termin.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold shadow-lg shadow-primary/30 transition-all" href="/kontakt">
+                        Rezerwuj teraz
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</MainLayout>
+
+<script>
+    // Prosty skrypt do filtrowania (wykonywany tylko w przeglądarce)
+    document.addEventListener('DOMContentLoaded', () => {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.gallery-item');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 1. Zmień aktywny przycisk
+                buttons.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white', 'border-primary');
+                    btn.classList.add('bg-white', 'text-slate-600');
+                });
+                button.classList.remove('bg-white', 'text-slate-600');
+                button.classList.add('bg-primary', 'text-white', 'border-primary');
+
+                // 2. Filtruj elementy
+                const filterValue = button.getAttribute('data-filter');
+
+                items.forEach(item => {
+                    // NAPRAWA BŁĘDU TS: Rzutujemy na HTMLElement, żeby mieć dostęp do .style
+                    const el = item as HTMLElement;
+                    const category = el.getAttribute('data-category');
+                    
+                    // Jeśli wybrano 'wszystkie' lub kategoria się zgadza
+                    if (filterValue === 'wszystkie' || filterValue === category) {
+                        el.classList.remove('hidden');
+                        // Mała animacja pojawiania się
+                        el.style.opacity = '0';
+                        setTimeout(() => el.style.opacity = '1', 50);
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    });
+</script>

@@ -1,0 +1,73 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="Kontakt">
+    <Navbar />
+    
+    <main class="pt-20">
+         <header class="py-16 md:py-24 text-center px-4 relative overflow-hidden">
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Skontaktuj się z nami</h1>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">Jesteśmy do Twojej dyspozycji 24/7.</p>
+            </div>
+        </header>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-slate-100">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="bg-slate-50 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-slate-100 flex flex-col justify-center space-y-10">
+                        <div class="flex items-start space-x-6">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <span class="material-icons">pin_drop</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Adres</h3>
+                                <p class="text-slate-600">ul. Wolności 6<br/>09-100 Płońsk</p>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-6">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <span class="material-icons">phone</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Telefon</h3>
+                                <a href="tel:+48123456789" class="text-lg font-semibold text-primary hover:underline">+48 123 456 789</a>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-6">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <span class="material-icons">email</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Email</h3>
+                                <a href="mailto:biuro@hotelwest.pl" class="text-lg font-semibold text-primary hover:underline">biuro@hotelwest.pl</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-8 md:p-12">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-8">Napisz wiadomość</h2>
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 ml-2">Imię</label>
+                                <input type="text" class="block w-full rounded-full border-0 px-6 py-4 bg-slate-50 ring-1 ring-slate-200 focus:ring-2 focus:ring-primary" placeholder="Twoje imię" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 ml-2">Wiadomość</label>
+                                <textarea rows="4" class="block w-full rounded-3xl border-0 px-6 py-4 bg-slate-50 ring-1 ring-slate-200 focus:ring-2 focus:ring-primary" placeholder="W czym możemy pomóc?"></textarea>
+                            </div>
+                            <button type="button" class="w-full rounded-full bg-primary px-10 py-4 text-sm font-semibold text-white shadow-lg hover:bg-primary-dark transition-all">
+                                Wyślij wiadomość
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</MainLayout>

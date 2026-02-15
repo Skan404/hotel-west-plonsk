@@ -1,0 +1,163 @@
+---
+// src/pages/index.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="Strona Główna">
+    <Navbar />
+    
+    <main>
+        <section class="relative pt-20 h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img alt="Hotel West Płońsk" class="w-full h-full object-cover" src="https://placehold.co/1920x1080/23170f/white?text=Hotel+West+Background" />
+                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-white">
+                <div class="max-w-3xl">
+                    <div class="inline-block bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full px-4 py-1 mb-6">
+                        <span class="text-primary font-medium text-sm tracking-wide uppercase">Witamy w Płońsku</span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                        Komfortowe Noclegi w <span class="text-primary">Centrum</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-200 mb-10 leading-relaxed font-light max-w-2xl">
+                        Profesjonalna obsługa, przytulne pokoje hotelowe i wygodne kwatery pracownicze w najlepszej lokalizacji.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a class="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-4 rounded-lg font-semibold shadow-lg shadow-primary/30 transition-all text-center" href="#pokoje">
+                            Zobacz Pokoje
+                        </a>
+                        <a class="bg-transparent hover:bg-white/10 text-white border-2 border-white text-lg px-8 py-4 rounded-lg font-semibold transition-all text-center" href="/kontakt">
+                            Skontaktuj się
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-background-light" id="o-nas">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="order-2 lg:order-1">
+                        <h2 class="text-primary font-semibold tracking-wider uppercase text-sm mb-2">O Naszym Hotelu</h2>
+                        <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Gościnność to nasza pasja od lat.</h3>
+                        <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                            Hotel West to miejsce stworzone z myślą o komforcie podróżujących. Niezależnie od tego, czy odwiedzasz Płońsk służbowo, czy turystycznie, zapewniamy warunki idealne do wypoczynku.
+                        </p>
+                        <div class="flex items-center gap-4 text-slate-800">
+                            <div class="flex flex-col">
+                                <span class="text-4xl font-bold text-primary">10+</span>
+                                <span class="text-sm font-medium opacity-70">Lat doświadczenia</span>
+                            </div>
+                            <div class="w-px h-12 bg-slate-300 mx-4"></div>
+                            <div class="flex flex-col">
+                                <span class="text-4xl font-bold text-primary">50+</span>
+                                <span class="text-sm font-medium opacity-70">Dostępnych pokoi</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2 relative group">
+                        <div class="absolute -inset-4 bg-primary/20 rounded-2xl transform rotate-3 transition-transform group-hover:rotate-1"></div>
+                        <img alt="Wnętrze pokoju" class="relative rounded-xl shadow-2xl w-full object-cover h-[400px] lg:h-[500px]" src="https://placehold.co/600x800/e2e8f0/1e293b?text=Wnetrze+Hotelu" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white border-y border-slate-100" id="dlaczego-my">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Dlaczego warto wybrać Hotel West?</h2>
+                    <p class="text-slate-600">Dbamy o każdy detal Twojego pobytu.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="group p-8 rounded-xl bg-background-light hover:bg-white hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 border border-transparent hover:border-primary/10">
+                        <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors text-primary">
+                            <span class="material-icons text-3xl">place</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Lokalizacja</h3>
+                        <p class="text-slate-600 text-sm">Ścisłe centrum Płońska. Blisko wszędzie.</p>
+                    </div>
+                    <div class="group p-8 rounded-xl bg-background-light hover:bg-white hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 border border-transparent hover:border-primary/10">
+                        <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors text-primary">
+                            <span class="material-icons text-3xl">local_parking</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Parking</h3>
+                        <p class="text-slate-600 text-sm">Monitorowany parking dla gości w cenie.</p>
+                    </div>
+                    <div class="group p-8 rounded-xl bg-background-light hover:bg-white hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 border border-transparent hover:border-primary/10">
+                        <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors text-primary">
+                            <span class="material-icons text-3xl">wifi</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Szybkie Wi-Fi</h3>
+                        <p class="text-slate-600 text-sm">Światłowód w każdym pokoju.</p>
+                    </div>
+                    <div class="group p-8 rounded-xl bg-background-light hover:bg-white hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 border border-transparent hover:border-primary/10">
+                        <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors text-primary">
+                            <span class="material-icons text-3xl">schedule</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Elastyczność</h3>
+                        <p class="text-slate-600 text-sm">Recepcja 24h. Zameldowanie o dogodnej porze.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-background-light" id="pokoje">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                    <div class="max-w-2xl">
+                        <h2 class="text-primary font-semibold tracking-wider uppercase text-sm mb-2">Oferta</h2>
+                        <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Wybierz pokój dla siebie</h3>
+                    </div>
+                    <a class="hidden md:inline-flex items-center text-primary font-semibold hover:text-primary/80 mt-4 md:mt-0" href="/cennik">
+                        Pełny cennik <span class="material-icons ml-1 text-lg">arrow_forward</span>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img alt="Pokój 2-osobowy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" src="https://placehold.co/600x400/e2e8f0/1e293b?text=Pokoj+2+os" />
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur text-primary font-bold px-4 py-1.5 rounded-full text-sm shadow-sm">
+                                od 120 PLN
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Pokój 2-osobowy</h4>
+                            <div class="flex items-center gap-4 mb-6 text-slate-400 text-sm">
+                                <span class="flex items-center gap-1"><span class="material-icons text-base">person</span> 2 os.</span>
+                                <span class="flex items-center gap-1"><span class="material-icons text-base">square_foot</span> 18 m²</span>
+                            </div>
+                            <a class="block w-full py-3 border border-primary text-primary hover:bg-primary hover:text-white text-center rounded-lg font-semibold transition-colors" href="/kontakt">
+                                Rezerwuj
+                            </a>
+                        </div>
+                    </div>
+                     <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img alt="Pokój 3-osobowy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" src="https://placehold.co/600x400/e2e8f0/1e293b?text=Pokoj+3+os" />
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur text-primary font-bold px-4 py-1.5 rounded-full text-sm shadow-sm">
+                                od 160 PLN
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Pokój 3-osobowy</h4>
+                            <div class="flex items-center gap-4 mb-6 text-slate-400 text-sm">
+                                <span class="flex items-center gap-1"><span class="material-icons text-base">person</span> 3 os.</span>
+                                <span class="flex items-center gap-1"><span class="material-icons text-base">square_foot</span> 25 m²</span>
+                            </div>
+                            <a class="block w-full py-3 border border-primary text-primary hover:bg-primary hover:text-white text-center rounded-lg font-semibold transition-colors" href="/kontakt">
+                                Rezerwuj
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</MainLayout>

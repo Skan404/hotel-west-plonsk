@@ -1,0 +1,43 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+
+@theme {
+  /* Definiujemy Twoje kolory z projektu */
+  --color-primary: #f97415;
+  --color-primary-dark: #d6600d;
+  --color-background-light: #f8f7f5;
+  --color-background-dark: #23170f;
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #2c1e16;
+
+  /* Fonty */
+  --font-display: "Inter", sans-serif;
+}
+
+/* Style bazowe */
+body {
+  @apply font-display bg-background-light text-slate-800;
+}
+
+/* Obsługa ikon Material Design */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
