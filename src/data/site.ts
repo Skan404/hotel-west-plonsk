@@ -3,7 +3,7 @@ export const site = {
   legalName: 'Kaniewski Bogusław Galeria Wolności Płońsk',
   address: 'ul. Wolności 6', city: 'Płońsk',
   nip: '5671756472', regon: '142835200',
-  email: 'officegp@op.pl', phone: '+48 533 222 444',
+  email: 'westhotelplonsk@gmail.com', phone: '+48 533 222 444',
   url: 'https://hotelwestplonsk.pl',
   maps: 'https://www.google.com/maps/search/?api=1&query=West+Hotel+Wolno%C5%9Bci+6+P%C5%82o%C5%84sk',
 };

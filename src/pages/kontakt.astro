@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import {site} from '../data/site';
 ---
-<Layout title="Kontakt i dojazd" description="West Hotel Płońsk, ul. Wolności 6. Zadzwoń pod +48 533 222 444 lub napisz na officegp@op.pl.">
+<Layout title="Kontakt i dojazd" description={`West Hotel Płońsk, ul. Wolności 6. Zadzwoń pod ${site.phone} lub napisz na ${site.email}.`}>
 <section class="contact-page">
   <header class="contact-hero" data-reveal="reveal">
     <span class="eyebrow">WEST HOTEL <i aria-hidden="true">✳</i> PŁOŃSK</span>
@@ -24,8 +24,8 @@ import {site} from '../data/site';
     </article>
     <article class="contact-card contact-card-place" data-reveal="right" data-reveal-order="2">
       <span class="contact-card-kicker">CENTRUM PŁOŃSKA <b>03</b></span>
-      <h2>Widzimy się<br/><em>przy Wolności.</em></h2>
-      <p><strong>West Hotel Płońsk</strong><br/>{site.address}, {site.city}</p>
+      <h2>Widzimy się<br/><em>„na Wolności”</em></h2>
+      <p>— na ulicy Wolności 6.<br/><strong>West Hotel Płońsk</strong></p>
       <a class="contact-card-action" href={site.maps} target="_blank" rel="noopener noreferrer"><strong>Wyznacz trasę</strong><span aria-hidden="true">↗</span></a>
     </article>
   </div>
