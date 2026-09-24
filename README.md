@@ -1,43 +1,44 @@
-# Astro Starter Kit: Minimal
+# West Hotel Płońsk
+
+Strona hotelwestplonsk.pl zbudowana w Astro. Zawiera stronę główną, galerię, cennik, kontakt i informacje o prywatności. Zdjęcia, film i fonty są serwowane lokalnie.
+
+## Uruchomienie i kontrola
+
+Node.js 24.13.1 (wersja zapisana w `.node-version`).
 
 ```sh
-npm create astro@latest -- --template minimal
+npm ci
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Podgląd: http://127.0.0.1:4325/.
 
-## 🚀 Project Structure
+Przed publikacją:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run lint
+npm run build
+npm run check:static
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Publikacja
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Repozytorium: https://github.com/Skan404/hotel-west-plonsk
 
-Any static assets, like images, can be placed in the `public/` directory.
+Projekt Cloudflare Pages: `hotel-west-plonsk`. Gałąź produkcyjna: `main`. Komenda budowania: `npm run build`. Katalog wynikowy: `dist`. Konfiguracja Pages znajduje się w `wrangler.jsonc`.
 
-## 🧞 Commands
+Wysłanie zmian do `main` uruchamia skonfigurowaną integrację GitHub–Cloudflare Pages. Aktualizacja domeny następuje po udanym wdrożeniu. Status jest widoczny przy commicie jako „Cloudflare Pages”. Przy cofnięciu można przywrócić poprzednie wdrożenie w panelu Cloudflare Pages.
 
-All commands are run from the root of the project, from a terminal:
+`.env.production` zawiera wyłącznie publiczne ustawienie `PUBLIC_INDEXABLE=true`. Produkcyjny build udostępnia indeksowanie i sitemapę. Podgląd developerski pozostaje zablokowany dla robotów. Zmienna środowiskowa `PUBLIC_INDEXABLE=false` pozwala zbudować wersję bez indeksowania.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Nie dodawać do repozytorium tokenów Cloudflare, danych logowania, plików `.env.local`, logów ani oryginalnych materiałów roboczych. Sekrety nie są wymagane do budowania strony.
 
-## 👀 Want to learn more?
+## Edycja
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `src/data/site.ts` — dane kontaktowe i lista zdjęć.
+- `src/pages/` — treść podstron.
+- `src/layouts/Layout.astro` — wspólny układ i animacje.
+- `src/styles/global.css` — wygląd i responsywność.
+- `public/images/` i `public/video/` — materiały publikowane na stronie.
+- `public/reveal-init.js` — uruchamiany przed wyrenderowaniem treści, zapobiega miganiu elementów przed animacją; osobny plik jest zgodny z CSP.
+- `public/_headers` — nagłówki bezpieczeństwa i pamięci podręcznej.

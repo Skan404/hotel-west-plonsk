@@ -1,0 +1,25 @@
+export const site = {
+  name: 'West Hotel Płońsk',
+  legalName: 'Kaniewski Bogusław Galeria Wolności Płońsk',
+  address: 'ul. Wolności 6', city: 'Płońsk',
+  nip: '5671756472', regon: '142835200',
+  email: 'officegp@op.pl', phone: '+48 533 222 444',
+  url: 'https://hotelwestplonsk.pl',
+  maps: 'https://www.google.com/maps/search/?api=1&query=West+Hotel+Wolno%C5%9Bci+6+P%C5%82o%C5%84sk',
+};
+export const photos = [
+ {id:'room-1',category:'Pokoje',title:'Pokój',alt:'Wnętrze pokoju w West Hotel Płońsk'},
+ {id:'room-2',category:'Pokoje',title:'Przestrzeń na odpoczynek',alt:'Wyposażenie odnowionego pokoju gościnnego'},
+ {id:'room-3',category:'Pokoje',title:'Pokój z dwoma łóżkami',alt:'Pokój noclegowy z dwoma łóżkami'},
+ {id:'room-4',category:'Pokoje',title:'Zajrzyj do środka',alt:'Kolejne ujęcie odnowionego pokoju hotelowego'},
+ {id:'apartment-kitchen',category:'Kuchnie i łazienka',title:'Kuchnia w apartamencie',alt:'Kuchnia w apartamencie West Hotel'},
+ {id:'kitchen',category:'Kuchnie i łazienka',title:'Kuchnia w mieszkaniu',alt:'Kuchnia w mieszkaniu'},
+ {id:'bathroom',category:'Kuchnie i łazienka',title:'Łazienka',alt:'Łazienka w obiekcie noclegowym'},
+ {id:'room-5',category:'Pokoje',title:'Pokój z łóżkami pojedynczymi',alt:'Pokój z łóżkami pojedynczymi'},
+ {id:'room-6',category:'Pokoje',title:'Pokój z dużym łóżkiem',alt:'Pokój z dużym łóżkiem i oknem'},
+ {id:'shared-kitchen',category:'Kuchnie i łazienka',title:'Kuchnia wspólna',alt:'Wspólna kuchnia z miejscem do przygotowywania posiłków'},
+ {id:'courtyard',category:'Obiekt',title:'Od strony dziedzińca',alt:'Budynek hotelu widziany od środka działki'},
+ {id:'courtyard-2',category:'Obiekt',title:'Nasze miejsce w Płońsku',alt:'Drugie ujęcie budynku od strony działki'},
+ {id:'front-night',category:'Obiekt',title:'Wolności 6 po zmroku',alt:'Front budynku West Hotel nocą'},
+ {id:'front-night-2',category:'Obiekt',title:'Wieczór przy Wolności',alt:'Oświetlony front budynku hotelu'},
+];

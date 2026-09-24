@@ -1,24 +1,20 @@
-# build output
-dist/
-# generated types
-.astro/
-
-# dependencies
 node_modules/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-
-# environment variables
+dist/
+.astro/
+.tools/
+.wrangler/
+.worker-check/
 .env
-.env.production
-
-# macOS-specific files
-.DS_Store
-
-# jetbrains setting folder
-.idea/
+.dev.vars
+qa/
+probe.jpg
+media-contact-sheet.jpg
+drone-*.jpg
+review-media/
+.wrangler-logs/
+.env.*
+!.env.production
+*.log
+/KuchniaWspolna.JPG
+/PokojPrzedRemontem.JPG
+/PokojPrzedRemontem2.BMP

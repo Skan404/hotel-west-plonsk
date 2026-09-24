@@ -1,0 +1,1 @@
+export function GET(){const ready=import.meta.env.PUBLIC_INDEXABLE==='true';return new Response(`User-agent: *\n${ready?'Allow: /':'Disallow: /'}\nSitemap: https://hotelwestplonsk.pl/sitemap.xml\n`,{headers:{'Content-Type':'text/plain; charset=utf-8'}});}

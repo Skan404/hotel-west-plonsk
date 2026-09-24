@@ -1,149 +1,19 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-
-// Tutaj definiujemy kategorie do filtrowania
-const filters = [
-  { label: 'Wszystkie', value: 'wszystkie' },
-  { label: 'Pokoje', value: 'pokoje' },
-  { label: 'Łazienki', value: 'lazienki' },
-  { label: 'Części wspólne', value: 'wspolne' },
-];
+import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import {photos} from '../data/site';
+const groups=[{name:'Pokoje',id:'pokoje'},{name:'Kuchnie i łazienka',id:'kuchnie'},{name:'Obiekt',id:'obiekt'}];
 ---
-
-<MainLayout title="Galeria Zdjęć">
-    <Navbar />
-    
-    <main class="pt-20">
-        <section class="bg-white py-16 text-center border-b border-slate-100">
-            <div class="max-w-7xl mx-auto px-4">
-                <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-primary/10 rounded-full">
-                    Nasze Wnętrza
-                </span>
-                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Galeria Zdjęć</h1>
-                <p class="text-xl text-slate-600 max-w-2xl mx-auto">
-                    Zobacz nasze pokoje, nowoczesne łazienki oraz udogodnienia przygotowane specjalnie dla Ciebie.
-                </p>
-            </div>
-        </section>
-
-        <section class="py-8 sticky top-20 z-40 shadow-sm/50 backdrop-blur-md bg-background-light/90">
-            <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-3">
-                {filters.map((filter, index) => (
-                    <button 
-                        class={`filter-btn px-6 py-2.5 rounded-full text-sm font-medium transition-all border border-slate-200 shadow-sm hover:shadow-md 
-                        ${index === 0 ? 'bg-primary text-white border-primary' : 'bg-white text-slate-600 hover:text-primary hover:border-primary/30'}`}
-                        data-filter={filter.value}
-                    >
-                        {filter.label}
-                    </button>
-                ))}
-            </div>
-        </section>
-
-        <section class="py-12 bg-background-light min-h-screen">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6" id="gallery-grid">
-                    
-                    <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="pokoje">
-                        <img src="https://placehold.co/600x800/e2e8f0/1e293b?text=Pokoj+Pionowy" alt="Pokój hotelowy" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="lazienki">
-                        <img src="https://placehold.co/800x600/f1f5f9/334155?text=Lazienka" alt="Łazienka" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="wspolne">
-                        <img src="https://placehold.co/800x500/fff7ed/9a3412?text=Recepcja" alt="Recepcja" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="pokoje">
-                        <img src="https://placehold.co/800x600/e2e8f0/1e293b?text=Pokoj+Standard" alt="Pokój standard" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="wspolne">
-                        <img src="https://placehold.co/600x900/f8fafc/475569?text=Korytarz" alt="Korytarz" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
-                        </div>
-                    </div>
-                     <div class="gallery-item break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer" data-category="lazienki">
-                        <img src="https://placehold.co/800x600/f1f5f9/334155?text=Prysznic" alt="Prysznic" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <span class="material-icons text-white text-4xl bg-primary/80 p-3 rounded-full">zoom_in</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-            <div class="bg-primary/5 rounded-2xl p-8 md:p-12 text-center border border-primary/10">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Podoba Ci się to co widzisz?</h2>
-                <p class="text-slate-600 mb-8 max-w-xl mx-auto">
-                    Nasze pokoje znikają szybko. Sprawdź dostępność na wybrany termin.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold shadow-lg shadow-primary/30 transition-all" href="/kontakt">
-                        Rezerwuj teraz
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <Footer />
-</MainLayout>
-
+<Layout title="Galeria pokoi i obiektu" description="Obejrzyj zdjęcia pokoi, kuchni, łazienki i budynku West Hotel Płońsk przy ul. Wolności 6.">
+<section class="page-heading" data-reveal="reveal"><span class="eyebrow">WEST HOTEL / GALERIA</span><h1>Zajrzyj <em>do środka.</em></h1><p>Pokoje, wnętrza i nasze miejsce przy Wolności 6. Poznaj West Hotel przed przyjazdem.</p><nav class="gallery-nav" aria-label="Sekcje galerii">{groups.map(g=><a href={`#${g.id}`}>{g.name}</a>)}</nav></section>
+{groups.map((group,groupIndex)=><section class="gallery-section" id={group.id}><h2 data-reveal={groupIndex%2===0?'left':'right'}>{group.name}</h2><div class="gallery-grid">{photos.filter(p=>p.category===group.name).map((photo,index)=><figure class="gallery-card" data-reveal={index%3===1?'pop':index%2===0?'left':'right'}><a class="gallery-link" href={`/images/${photo.id}-1920.webp`} aria-label={`Powiększ: ${photo.title}`} data-title={photo.title}><Photo id={photo.id} alt={photo.alt} eager={['room-1', 'room-2', 'room-3'].includes(photo.id)} sizes="(max-width: 390px) 100vw, (max-width: 1000px) 50vw, 33vw"/></a><figcaption>{photo.title}</figcaption></figure>)}</div></section>)}
+<div class="cta-row" data-reveal="pop"><h2>Masz już plan na pobyt?</h2><a href="tel:+48533222444" class="button">Zadzwoń: +48 533 222 444 <span>↗</span></a></div>
+<dialog class="lightbox" aria-label="Powiększone zdjęcie"><button class="lightbox-close" autofocus>Zamknij ×</button><img width="1280" height="960" alt=""/><p></p></dialog>
 <script>
-    // Prosty skrypt do filtrowania (wykonywany tylko w przeglądarce)
-    document.addEventListener('DOMContentLoaded', () => {
-        const buttons = document.querySelectorAll('.filter-btn');
-        const items = document.querySelectorAll('.gallery-item');
-
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                // 1. Zmień aktywny przycisk
-                buttons.forEach(btn => {
-                    btn.classList.remove('bg-primary', 'text-white', 'border-primary');
-                    btn.classList.add('bg-white', 'text-slate-600');
-                });
-                button.classList.remove('bg-white', 'text-slate-600');
-                button.classList.add('bg-primary', 'text-white', 'border-primary');
-
-                // 2. Filtruj elementy
-                const filterValue = button.getAttribute('data-filter');
-
-                items.forEach(item => {
-                    // NAPRAWA BŁĘDU TS: Rzutujemy na HTMLElement, żeby mieć dostęp do .style
-                    const el = item as HTMLElement;
-                    const category = el.getAttribute('data-category');
-                    
-                    // Jeśli wybrano 'wszystkie' lub kategoria się zgadza
-                    if (filterValue === 'wszystkie' || filterValue === category) {
-                        el.classList.remove('hidden');
-                        // Mała animacja pojawiania się
-                        el.style.opacity = '0';
-                        setTimeout(() => el.style.opacity = '1', 50);
-                    } else {
-                        el.classList.add('hidden');
-                    }
-                });
-            });
-        });
-    });
-</script>
+ const dialog=document.querySelector<HTMLDialogElement>('.lightbox');
+ let opener:HTMLAnchorElement|null=null;
+ document.querySelectorAll<HTMLAnchorElement>('.gallery-link').forEach(link=>link.addEventListener('click',event=>{if(!dialog?.showModal)return;event.preventDefault();opener=link;const img=dialog.querySelector('img')!;img.src=link.href;img.alt=link.querySelector('img')?.alt||'';dialog.querySelector('p')!.textContent=link.dataset.title||'';dialog.showModal();}));
+ dialog?.querySelector('button')?.addEventListener('click',()=>dialog.close());
+ dialog?.addEventListener('click',event=>{if(event.target===dialog){const box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close();}});
+ dialog?.addEventListener('close',()=>opener?.focus());
+</script></Layout>

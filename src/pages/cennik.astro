@@ -1,75 +1,46 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+import {site} from '../data/site';
+const rooms=[
+ {capacity:'1 osoba',label:'Pokój jednoosobowy',price:'150'},
+ {capacity:'2 osoby',label:'Pokój dwuosobowy',price:'200'},
+ {capacity:'3 osoby',label:'Pokój trzyosobowy',price:'250'},
+ {capacity:'4 osoby',label:'Pokój czteroosobowy',price:'300'},
+ {capacity:'5 osób',label:'Pokój pięcioosobowy',price:'400'},
+];
 ---
+<Layout title="Cennik pokoi i wynajmu" description="Cennik West Hotel Płońsk: pokoje jednoosobowe 150 zł, dwuosobowe 200 zł, trzyosobowe 250 zł, czteroosobowe 300 zł i pięcioosobowe 400 zł. Mieszkania i kawalerki na wynajem.">
+<section class="pricing-page">
+  <header class="pricing-intro" data-reveal="reveal">
+    <span class="eyebrow">WEST HOTEL · PŁOŃSK · CENNIK</span>
+    <h1>Cena pobytu.<br/><em>Jasne zasady.</em></h1>
+    <p>Wybierz pokój odpowiedni do liczby gości. Szukasz mieszkania lub planujesz dłuższy pobyt? Zadzwoń — ustalimy szczegóły.</p>
+  </header>
 
-<MainLayout title="Cennik">
-    <Navbar />
-    
-    <main class="pt-20">
-        <header class="py-16 md:py-20 bg-white border-b border-slate-100 text-center">
-            <div class="max-w-7xl mx-auto px-4">
-                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Cennik i Oferta</h1>
-                <p class="text-xl text-slate-600 max-w-2xl mx-auto">
-                    Poznaj nasze konkurencyjne ceny. Brak ukrytych opłat.
-                </p>
-            </div>
-        </header>
+  <section class="pricing-rooms" aria-labelledby="rooms-title">
+    <div class="pricing-section-heading" data-reveal="right"><div><span class="eyebrow">NOCLEGI</span><h2 id="rooms-title">Pokoje</h2></div><p>Kwoty w złotych</p></div>
+    <div class="room-price-grid">
+      {rooms.map((room,index)=><article class="room-price-card" data-reveal={index%2===0?'left':'right'} data-reveal-order={index%4}>
+        <span class="room-price-index">{String(index+1).padStart(2,'0')}</span>
+        <span class="room-price-capacity">{room.capacity}</span>
+        <h3>{room.label}</h3>
+        <p class="room-price-amount"><strong>{room.price}</strong><span>zł</span></p>
+      </article>)}
+      <article class="room-price-card room-price-card-contact" data-reveal="pop" data-reveal-order="2">
+        <span class="room-price-index">06</span>
+        <span class="room-price-capacity">MIESZKANIA · KAWALERKI</span>
+        <h3>Więcej osób lub osobna przestrzeń?</h3>
+        <p>Skontaktuj się z nami — przedstawimy możliwości i ustalimy szczegóły.</p>
+        <a href={`tel:${site.phone.replace(/\s/g,'')}`}>Prosimy o kontakt <span aria-hidden="true">↗</span></a>
+      </article>
+    </div>
+  </section>
 
-        <section class="py-20 bg-background-light">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-slate-50 border-b-2 border-primary/30">
-                                    <th class="py-6 px-6 text-slate-900 font-bold text-lg">Rodzaj Zakwaterowania</th>
-                                    <th class="py-6 px-6 text-slate-900 font-bold text-lg text-center">Cena za dobę</th>
-                                    <th class="py-6 px-6 text-transparent w-1/6">Akcja</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="py-6 px-6">
-                                        <div class="font-bold text-slate-800 text-lg">Pokój 1-osobowy</div>
-                                    </td>
-                                    <td class="py-6 px-6 text-center">
-                                        <span class="text-primary font-bold text-xl">120 PLN</span>
-                                    </td>
-                                    <td class="py-6 px-6 text-center">
-                                        <a class="inline-block px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors text-sm" href="/kontakt">Rezerwuj</a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-slate-50/50 hover:bg-slate-50 transition-colors">
-                                    <td class="py-6 px-6">
-                                        <div class="font-bold text-slate-800 text-lg">Pokój 2-osobowy</div>
-                                    </td>
-                                    <td class="py-6 px-6 text-center">
-                                        <span class="text-primary font-bold text-xl">160 PLN</span>
-                                    </td>
-                                    <td class="py-6 px-6 text-center">
-                                        <a class="inline-block px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors text-sm" href="/kontakt">Rezerwuj</a>
-                                    </td>
-                                </tr>
-                                 <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="py-6 px-6">
-                                        <div class="font-bold text-slate-800 text-lg">Pokój 3-osobowy</div>
-                                    </td>
-                                    <td class="py-6 px-6 text-center">
-                                        <span class="text-primary font-bold text-xl">210 PLN</span>
-                                    </td>
-                                    <td class="py-6 px-6 text-center">
-                                        <a class="inline-block px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-medium transition-colors text-sm" href="/kontakt">Rezerwuj</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+  <section class="pricing-rental">
+    <div data-reveal="left"><span class="eyebrow">WIĘCEJ MOŻLIWOŚCI</span><h2>Mieszkania<br/><em>i kawalerki.</em></h2></div>
+    <div class="pricing-rental-copy" data-reveal="right"><p>Oferujemy również mieszkania, pokoje i kawalerki na wynajem. Przy pobycie powyżej 3 dób istnieje możliwość indywidualnego ustalenia ceny.</p><a class="button" href={`tel:${site.phone.replace(/\s/g,'')}`}>Zapytaj o ofertę <span>↗</span></a></div>
+  </section>
 
-    <Footer />
-</MainLayout>
+  <section class="pricing-contact"><div data-reveal="reveal"><span class="eyebrow">ZAREZERWUJ LUB ZAPYTAJ</span><h2>Porozmawiajmy<br/><em>o Twoim pobycie.</em></h2></div><a href={`tel:${site.phone.replace(/\s/g,'')}`} class="pricing-phone" data-reveal="pop">{site.phone}<span aria-hidden="true">↗</span></a></section>
+</section>
+</Layout>

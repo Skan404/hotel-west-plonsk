@@ -1,0 +1,50 @@
+---
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import {site} from '../data/site';
+interface Props {title:string; description:string; noindex?:boolean;}
+const {title,description,noindex=false}=Astro.props;
+const indexable=import.meta.env.PUBLIC_INDEXABLE==='true' && !noindex;
+const path=Astro.url.pathname;
+const nav=[['/','Strona główna'],['/galeria/','Galeria'],['/cennik/','Cennik'],['/kontakt/','Kontakt']];
+const schema={'@context':'https://schema.org','@type':'LodgingBusiness',name:site.name,url:site.url,email:site.email,address:{'@type':'PostalAddress',streetAddress:site.address,addressLocality:site.city,addressCountry:'PL'}};
+---
+<!doctype html><html lang="pl"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{title} | West Hotel Płońsk</title><meta name="description" content={description}/><meta name="robots" content={indexable?'index,follow':'noindex,nofollow'}/><link rel="canonical" href={new URL(path,site.url)}/><link rel="icon" type="image/svg+xml" href="/favicon.svg"/><meta name="theme-color" content="#32231e"/><meta property="og:type" content="website"/><meta property="og:locale" content="pl_PL"/><meta property="og:title" content={`${title} | West Hotel Płońsk`}/><meta property="og:description" content={description}/><meta property="og:url" content={new URL(path,site.url)}/><meta property="og:image" content={`${site.url}/og.jpg`}/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><script is:inline type="application/ld+json" set:html={JSON.stringify(schema)}/>
+<script is:inline src="/reveal-init.js"></script></head>
+<body><a class="skip" href="#main">Przejdź do treści</a>
+<header class="header"><a class="brand" href="/" aria-label="West Hotel Płońsk — strona główna"><span class="brand-name">WEST<span class="brand-star">✳</span></span><span class="brand-caption">HOTEL · PŁOŃSK</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">☰</span></button><nav id="navigation" aria-label="Nawigacja główna">{nav.map(([href,label])=><a href={href} aria-current={path===href?'page':undefined}>{label}</a>)}</nav><a class="header-contact" href={site.phone?`tel:${site.phone.replace(/\s/g,'')}`:'/kontakt/'}>{site.phone || 'Zapytaj o nocleg'} <span aria-hidden="true">↗</span></a></header>
+<main id="main"><slot/></main>
+<footer><div class="footer-top"><a class="brand inverse" href="/"><span class="brand-name">WEST<span class="brand-star">✳</span></span><span class="brand-caption">HOTEL · PŁOŃSK</span></a><p>Twoje miejsce na odpoczynek.<br/>Płońsk, ul. Wolności 6.</p><a class="footer-mail" href={`mailto:${site.email}`}>{site.email} ↗</a></div><div class="footer-bottom"><span>© {new Date().getFullYear()} {site.legalName}</span><a href="/prywatnosc/">Polityka prywatności</a><span>NIP {site.nip}</span></div></footer>
+<script>
+ document.documentElement.classList.add('js');
+ const button=document.querySelector<HTMLButtonElement>('.menu-toggle');
+ const nav=document.querySelector<HTMLElement>('#navigation');
+ button?.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')!=='true';button.setAttribute('aria-expanded',String(open));nav?.classList.toggle('open',open);});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&button?.getAttribute('aria-expanded')==='true'){button.setAttribute('aria-expanded','false');nav?.classList.remove('open');button.focus();}});
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ if(!reduced.matches && 'IntersectionObserver' in window && document.documentElement.classList.contains('reveal-ready')){
+  const active=new Set<Animation>();
+  const variants:Record<string,{from:Keyframe,to:Keyframe}>={
+   left:{from:{opacity:0,transform:'translate3d(-58px,12px,0) rotate(-.8deg)',filter:'blur(3px)'},to:{opacity:1,transform:'translate3d(0,0,0) rotate(0)',filter:'blur(0)'}},
+   right:{from:{opacity:0,transform:'translate3d(58px,12px,0) rotate(.8deg)',filter:'blur(3px)'},to:{opacity:1,transform:'translate3d(0,0,0) rotate(0)',filter:'blur(0)'}},
+   lift:{from:{opacity:0,transform:'translate3d(0,42px,0)',filter:'blur(4px)'},to:{opacity:1,transform:'translate3d(0,0,0)',filter:'blur(0)'}},
+   reveal:{from:{opacity:0,clipPath:'inset(0 0 22% 0)',transform:'scale(.97)'},to:{opacity:1,clipPath:'inset(0 0 0 0)',transform:'scale(1)'}},
+   pop:{from:{opacity:0,transform:'translate3d(0,24px,0) scale(.94)'},to:{opacity:1,transform:'translate3d(0,0,0) scale(1)'}}
+  };
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+   if(!entry.isIntersecting||document.hidden)return;
+   const element=entry.target as HTMLElement;
+   element.style.visibility='visible';
+   const type=element.dataset.reveal||'lift';
+   const frames=variants[type]||variants.lift;
+   const order=Number(element.dataset.revealOrder||0);
+   const animation=element.animate([frames.from,frames.to],{duration:type==='reveal'?1050:920,delay:Math.min(order*115,345),easing:'cubic-bezier(.18,.82,.22,1)',fill:'both'});
+   active.add(animation);
+   animation.finished.then(()=>{active.delete(animation);animation.cancel();}).catch(()=>active.delete(animation));
+   observer.unobserve(element);
+  }),{threshold:.12,rootMargin:'0px 0px -16% 0px'});
+  document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((element,index)=>{if(!element.dataset.revealOrder)element.dataset.revealOrder=String(index%4);observer.observe(element);});
+  document.documentElement.classList.add('reveal-observing');
+  document.addEventListener('visibilitychange',()=>active.forEach(animation=>{if(document.hidden)animation.pause();else animation.play();}));
+ }
+</script></body></html>
